@@ -1,0 +1,1 @@
+# Gallery Plugin for TinyMCE
