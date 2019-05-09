@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            body {
+                font-family: sans-serif;
+                color: #333;
+                position: relative;
+                width: 100%;
+                min-height: 100%;
+                margin: 0;
+            }
+            .base {
+                width: 95%;
+                margin: 15px auto 0;
+            }
+            .table, .panel, #form_image{
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+            }
+            .panel{
+                top: 540px;
+                text-align: right;
+            }
+            .html-gallery{
+                display: none;
+                width: 1px;
+                height: 1px;
+            }
+            table{
+                border-collapse: collapse;
+                width: 100%;
+            }
+            .table{
+                height: 525px;
+                overflow-y: auto;
+                overflow-x: hidden;
+                -moz-box-shadow:    0px 0px 10px #ccc;
+                -webkit-box-shadow: 0px 0px 10px #ccc;
+                box-shadow:         0px 0px 10px #ccc;
+            }
+            table tr td:first-child{
+                width: 250px;
+                text-align: center;
+            }
+            table tr td:last-child{
+                width: 80px;
+                text-align: center;
+            }
+            table tr td:last-child button{
+                margin: 5px 0;
+            }
+            .header{
+                background-color: #f0f0f0;
+            }
+            .header td{
+                text-align: left !important;
+            }
+            td{
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+                text-align: left;
+            }
+            .table .thumb{
+                max-height: 150px;
+                max-width: 250px;
+            }
+            .table .title,
+            .table .desc,
+            .table .cred {
+                width: auto;
+                margin: 5px;
+            }
+            button{
+                border: 1px solid #f0f0f0;
+                background-color: #f0f0f0;
+                padding: 7px;
+                color: #333;
+                font-family: sans-serif;
+                font-size: 14px;
+            }
+            button:hover {
+                background-color: #e5e5e5;
+                border: 1px solid #ccc;
+            }
+            #form_image .row{
+                height: 32px;
+                margin: 0 auto 10px;
+            }
+            #form_image .row:last-child{
+                margin-top: 15px;
+                text-align: center;
+            }
+            #form_image .row .cell{
+                display: inline-block;
+            }
+            #form_image .row .cell:first-child{
+                width: 15%;
+            }
+            #form_image .row .cell:last-child{
+                width: 84%;
+            }
+            #form_image label{
+                font-size: 14px;
+            }
+            #form_image input{
+                font-size: 14px;
+                color: #666;
+                padding: 6px;
+                width: 95%;
+            }
+            .title{
+                font-weight: bold;
+                font-size: 16px;
+            }
+            .desc{
+                font-size: 14px;
+            }
+            .cred{
+                font-style: italic;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="base table">
+            <table id="table_images">
+                <tr class="header">
+                    <td>
+                        Thumbnail
+                    </td>
+                    <td>
+                        Title / Description / Credits
+                    </td>
+                    <td>
+                        Actions
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="base panel">
+            <div id="htmlgallery" class="html-gallery"></div>
+            <button id="add_imagem" onclick="showForm()">Add image</button>
+        </div>
+        <div id="form_image" class="base" style="display: none;">
+            <h3 id="txt_form_i">Add image</h3>
+            <h3 id="txt_form_m" style="display: none">Modify image</h3>
+            <div class="row">
+                <div class="cell">
+                    <label for="url_img">Image url</label>
+                </div>
+                <div class="cell">
+                    <input id="url_img" type="text" style="width: 84.7%;" />
+                    <button id="btnFileManager">Search</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <label for="alt_img">Alternative text</label>
+                </div>
+                <div class="cell">
+                    <input id="alt_img" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <label for="title_img">Title</label>
+                </div>
+                <div class="cell">
+                    <input id="title_img" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <label for="desc_img">Description</label>
+                </div>
+                <div class="cell">
+                    <input id="desc_img" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">
+                    <label for="cred_img">Credits</label>
+                </div>
+                <div class="cell">
+                    <input id="cred_img" type="text" />
+                </div>
+            </div>
+            <div class="row">
+                <button id="form_add" onclick="addImage()">Add</button>
+                <button id="form_edit" onclick="editImage(row)" style="display: none">Save</button>
+                <button id="form_back" onclick="closeForm()">Cancel</button>
+            </div>
+        </div>
+        <script id="GWT" type="text/javascript" ></script>
+        <script type="text/javascript" src="gallery.js"></script>
+    </body>
+</html>
