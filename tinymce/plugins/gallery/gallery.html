@@ -142,7 +142,7 @@
             </table>
         </div>
         <div class="base panel">
-            <div id="htmlgallery" class="html-gallery"></div>
+            <div id="htmlGallery" class="html-gallery"></div>
             <button id="add_imagem" onclick="showForm()">Add image</button>
         </div>
         <div id="form_image" class="base" style="display: none;">
@@ -154,7 +154,7 @@
                 </div>
                 <div class="cell">
                     <input id="url_img" type="text" style="width: 84.7%;" />
-                    <button id="btnFileManager">Search</button>
+                    <button onclick="openFileManager()" >Search</button>
                 </div>
             </div>
             <div class="row">
@@ -196,6 +196,6 @@
             </div>
         </div>
         <script id="GWT" type="text/javascript" ></script>
-        <script type="text/javascript" src="gallery.js"></script>
+        <script type="text/javascript" src="./gallery.js"></script>
     </body>
 </html>

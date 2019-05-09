@@ -13,7 +13,7 @@ var args = top.tinymce.activeEditor.windowManager.getParams();
 var element = args.element;
 
 while (element.nodeName !== "BODY") {
-    if (element.nodeName === "SLIDES") {
+    if (element.nodeName === "DIV" && element.getAttribute("id") === "slides") {
         loadGallery();
         break;
     }
@@ -44,7 +44,7 @@ function closeForm() {
     clearForm();
 }
 
-function addimage() {
+function addImage() {
     if (!validateForm()) {
         return;
     }
@@ -59,7 +59,7 @@ function addimage() {
             + "<div class='desc'>" + inp_desc.value + "</div>"
             + "<div class='cred'>" + inp_cred.value + "</div>";
     celAct.innerHTML = "<button onclick='editForm(this)'>Modify</button>"
-            + "<button onclick='removeimage(this)'>Remove</button>";
+            + "<button onclick='removeImage(this)'>Remove</button>";
     celDesc.setAttribute("data-url", encodeURIComponent(inp_url.value));
     celDesc.setAttribute("data-alt", encodeURIComponent(inp_alt.value));
     celDesc.setAttribute("data-title", encodeURIComponent(inp_title.value));
@@ -69,7 +69,7 @@ function addimage() {
     generateHtml();
 }
 
-function editimage(activeRow) {
+function editImage(activeRow) {
     if (!validateForm()) {
         return;
     }
@@ -95,7 +95,7 @@ function editimage(activeRow) {
     generateHtml();
 }
 
-function removeimage(e) {
+function removeImage(e) {
     qnt--;
     table.deleteRow(e.parentNode.parentNode.rowIndex);
     generateHtml();
@@ -154,7 +154,7 @@ function generateHtml() {
     var i;
     var html = "";
     if (qnt !== 0) {
-        html = "<p><!-- GALLERY BEGIN --><slides style='width: 100%; display:block; border: 1px solid #666;'>";
+        html = "<p><!-- GALLERY BEGIN --><div id='slides' style='width: 100%; display:block; border: 1px solid #666;'>";
         for (i = 1; i <= qnt; i++) {
             var row = table.rows[i];
             var celDesc = row.cells[1];
@@ -163,14 +163,14 @@ function generateHtml() {
             var title = decodeURIComponent(celDesc.getAttribute("data-title"));
             var desc = decodeURIComponent(celDesc.getAttribute("data-desc"));
             var cred = decodeURIComponent(celDesc.getAttribute("data-cred"));
-            html = html + "<slide style='border: 1px solid #ccc; display: inline-block; max-width: 235px; height: 235px; text-align: center; padding: 5px; vertical-align: top; margin: 2px;'>";
+            html = html + "<div id='slide' style='border: 1px solid #ccc; display: inline-block; max-width: 235px; height: 235px; text-align: center; padding: 5px; vertical-align: top; margin: 2px;'>";
             html = html + "<img src='" + url + "' alt='" + alt + "' title='" + title + "' longdesc='" + desc + "' style='max-height: 150px; max-width: 200px; margin: 0 auto; display: block;' />";
-            html = html + "<title style='display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: bold; font-size: 16px;line-height: 30px;'>" + title + "</title>";
-            html = html + "<desc style='display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px;line-height: 25px;'>" + desc + "</descricao>";
-            html = html + "<cred style='display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-style: italic; font-size: 12px;line-height: 20px;'>" + cred + "</creditos>";
-            html = html + "</slide>";
+            html = html + "<div id='title' style='display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: bold; font-size: 16px;line-height: 30px;'>" + title + "</div>";
+            html = html + "<div id='desc' style='display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px;line-height: 25px;'>" + desc + "</div>";
+            html = html + "<div id='cred' style='display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-style: italic; font-size: 12px;line-height: 20px;'>" + cred + "</div>";
+            html = html + "</div>";
         }
-        html = html + "</slides><!-- GALLERY END --></p>";
+        html = html + "</div><!-- GALLERY END --></p>";
     }
     document.getElementById("htmlGallery").innerHTML = html;
 }
@@ -187,7 +187,7 @@ function loadGallery() {
         var desc = "";
         var cred = "";
         slideElement = element.childNodes[i];
-        if (slideElement.nodeName === "SLIDE") {
+        if (slideElement.nodeName === "DIV" && slideElement.getAttribute("id") === "slide") {
             var infoElement;
             var infoCount = slideElement.childNodes.length;
             for (var j = 0; j < infoCount; j++) {
@@ -196,13 +196,13 @@ function loadGallery() {
                     url = infoElement.getAttribute("src");
                     alt = infoElement.getAttribute("alt");
                 }
-                if (infoElement.nodeName === "TITLE") {
+                if (infoElement.nodeName === "DIV" && infoElement.getAttribute("id") === "title") {
                     title = infoElement.innerHTML;
                 }
-                if (infoElement.nodeName === "DESC") {
+                if (infoElement.nodeName === "DIV" && infoElement.getAttribute("id") === "desc") {
                     desc = infoElement.innerHTML;
                 }
-                if (infoElement.nodeName === "CRED") {
+                if (infoElement.nodeName === "DIV" && infoElement.getAttribute("id") === "cred") {
                     cred = infoElement.innerHTML;
                 }
             }
@@ -218,7 +218,7 @@ function loadGallery() {
                     + "<div class='desc'>" + desc + "</div>"
                     + "<div class='cred'>" + cred + "</div>";
             celAct.innerHTML = "<button onclick='editForm(this)'>Modify</button>"
-                    + "<button onclick='removeimage(this)'>Remove</button>";
+                    + "<button onclick='removeImage(this)'>Remove</button>";
             celDesc.setAttribute("data-url", encodeURIComponent(url));
             celDesc.setAttribute("data-alt", encodeURIComponent(alt));
             celDesc.setAttribute("data-title", encodeURIComponent(title));
@@ -226,7 +226,7 @@ function loadGallery() {
             celDesc.setAttribute("data-cred", encodeURIComponent(cred));
         }
     }
-    gerarHtml();
+    generateHtml();
 }
 
 function openFileManager() {

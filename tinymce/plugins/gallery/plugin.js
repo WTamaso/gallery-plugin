@@ -1,11 +1,11 @@
 tinymce.PluginManager.add("gallery", function (editor, url) {
     editor.addButton('gallery', {
         tooltip: 'Insert/modify gallery',
-        image: url + '/img/icon.gif',
+        image: './tinymce/plugins/gallery/img/icon.gif',
         onclick: function () {
             editor.windowManager.open({
                 title: 'Insert gallery',
-                url: url + '/gallery.html',
+                url: './tinymce/plugins/gallery/gallery.html',
                 width: 900,
                 height: 600,
                 buttons: [
@@ -14,7 +14,7 @@ tinymce.PluginManager.add("gallery", function (editor, url) {
                         onclick: function () {
                             var b = editor.windowManager.getWindows()[0];
                             prepareHTML(editor);
-                            editor.insertContent(b.getContentWindow().document.getElementById("htmlgallery").innerHTML);
+                            editor.insertContent(b.getContentWindow().document.getElementById("htmlGallery").innerHTML);
                             b.close();
                         }
                     }, {
@@ -55,7 +55,7 @@ tinymce.PluginManager.add("gallery", function (editor, url) {
             editor.on('NodeChange', function (e) {
                 var g = false;
                 while (e.element.nodeName !== "BODY") {
-                    if (e.element.nodeName === "SLIDES") {
+                    if (e.element.nodeName === "DIV" && e.element.getAttribute("id") === "slides") {
                         g = true;
                         break;
                     }
@@ -66,12 +66,12 @@ tinymce.PluginManager.add("gallery", function (editor, url) {
         }
     });
     editor.addMenuItem('gallery', {
-        text: 'gallery',
+        text: 'Gallery',
         context: 'insert',
         onclick: function () {
             editor.windowManager.open({
                 title: 'Insert gallery',
-                url: url + '/gallery.html',
+                url: './tinymce/plugins/gallery/gallery.html',
                 width: 900,
                 height: 600,
                 buttons: [
@@ -80,7 +80,7 @@ tinymce.PluginManager.add("gallery", function (editor, url) {
                         onclick: function () {
                             var b = editor.windowManager.getWindows()[0];
                             prepareHTML(editor);
-                            editor.insertContent(b.getContentWindow().document.getElementById("htmlgallery").innerHTML);
+                            editor.insertContent(b.getContentWindow().document.getElementById("htmlGallery").innerHTML);
                             b.close();
                         }
                     }, {
@@ -122,7 +122,7 @@ tinymce.PluginManager.add("gallery", function (editor, url) {
 function prepareHTML(editor) {
     var element = editor.selection.getNode();
     while (element.nodeName !== "BODY") {
-        if (element.nodeName === "SLIDES") {
+        if (element.nodeName === "DIV" && element.getAttribute("id") === "slides") {
             element.parentNode.removeChild(element);
             break;
         }
