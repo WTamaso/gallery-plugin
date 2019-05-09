@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--  -->
 <html>
     <head>
         <title>Gallery Plugin for TinyMCE - Demo</title>
@@ -15,7 +16,77 @@
     <body>
         <h1>Gallery Plugin for TinyMCE</h1>
         <form method="post">
-            <textarea id="mytextarea"></textarea>
+            <textarea id="mytextarea">
+                <!-- <div id="slides" style="width: 100%; display: block; border: 1px solid #666;">
+                    <div id="slide"
+                        style="border: 1px solid #ccc; display: inline-block; max-width: 235px; height: 235px; text-align: center; padding: 5px; vertical-align: top; margin: 2px;">
+                        <img style="max-height: 150px; max-width: 200px; margin: 0 auto; display: block;" title="THE TITLE GOES HERE"
+                            src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;w=1000&amp;q=80"
+                            alt="A tabby sitting on a sofa" longdesc="THE DESCRIPTION GOES HERE" />
+                        <div id="title"
+                            style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: bold; font-size: 16px; line-height: 30px;">
+                            THE TITLE GOES HERE</div>
+                        <div id="desc"
+                            style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; line-height: 25px;">
+                            THE DESCRIPTION GOES HERE</div>
+                        <div id="cred"
+                            style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-style: italic; font-size: 12px; line-height: 20px;">
+                            THE CREDITS GOES HERE</div>
+                    </div>
+                    <div id="slide"
+                        style="border: 1px solid #ccc; display: inline-block; max-width: 235px; height: 235px; text-align: center; padding: 5px; vertical-align: top; margin: 2px;">
+                        <img style="max-height: 150px; max-width: 200px; margin: 0 auto; display: block;" title="THE TITLE GOES HERE"
+                            src="https://ichef.bbci.co.uk/images/ic/720x405/p0517py6.jpg" alt="A Scottish fold cat licking its snout"
+                            longdesc="THE DESCRIPTION GOES HERE" />
+                        <div id="title"
+                            style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: bold; font-size: 16px; line-height: 30px;">
+                            THE TITLE GOES HERE</div>
+                        <div id="desc"
+                            style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; line-height: 25px;">
+                            THE DESCRIPTION GOES HERE</div>
+                        <div id="cred"
+                            style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-style: italic; font-size: 12px; line-height: 20px;">
+                            THE CREDITS GOES HERE</div>
+                    </div>
+                </div> -->
+            </textarea>
         </form>
+
+
+        <h3>The resultant code will looks like this</h3>
+        <div id="slides" style="width: 100%; display: block; border: 1px solid #666;">
+            <div id="slide"
+                style="border: 1px solid #ccc; display: inline-block; max-width: 235px; height: 235px; text-align: center; padding: 5px; vertical-align: top; margin: 2px;">
+                <img style="max-height: 150px; max-width: 200px; margin: 0 auto; display: block;" title="THE TITLE GOES HERE"
+                    src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;w=1000&amp;q=80"
+                    alt="A tabby sitting on a sofa" longdesc="THE DESCRIPTION GOES HERE" />
+                <div id="title"
+                    style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: bold; font-size: 16px; line-height: 30px;">
+                    THE TITLE GOES HERE</div>
+                <div id="desc"
+                    style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; line-height: 25px;">
+                    THE DESCRIPTION GOES HERE</div>
+                <div id="cred"
+                    style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-style: italic; font-size: 12px; line-height: 20px;">
+                    THE CREDITS GOES HERE</div>
+            </div>
+            <div id="slide"
+                style="border: 1px solid #ccc; display: inline-block; max-width: 235px; height: 235px; text-align: center; padding: 5px; vertical-align: top; margin: 2px;">
+                <img style="max-height: 150px; max-width: 200px; margin: 0 auto; display: block;" title="THE TITLE GOES HERE"
+                    src="https://ichef.bbci.co.uk/images/ic/720x405/p0517py6.jpg" alt="A Scottish fold cat licking its snout"
+                    longdesc="THE DESCRIPTION GOES HERE" />
+                <div id="title"
+                    style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: bold; font-size: 16px; line-height: 30px;">
+                    THE TITLE GOES HERE</div>
+                <div id="desc"
+                    style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; line-height: 25px;">
+                    THE DESCRIPTION GOES HERE</div>
+                <div id="cred"
+                    style="display: block; width: 225px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-style: italic; font-size: 12px; line-height: 20px;">
+                    THE CREDITS GOES HERE</div>
+            </div>
+        </div>
+        <p>So you should manipulate it in your front-end to do what you want.</p>
+        <p>This plugin are a tool for create and edit galleries inside the <b>TinyMCE</b> editor.</p>
     </body>
 </html>
